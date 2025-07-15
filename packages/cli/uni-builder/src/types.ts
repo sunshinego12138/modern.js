@@ -34,8 +34,6 @@ import type { PluginStyledComponentsOptions } from '@rsbuild/plugin-styled-compo
 import type { SvgDefaultExport } from '@rsbuild/plugin-svgr';
 import type { PluginTypeCheckerOptions } from '@rsbuild/plugin-type-check';
 import type { Options as AutoprefixerOptions } from 'autoprefixer';
-import type { Options as HTMLPluginOptions } from 'html-webpack-plugin';
-import type { PluginTsLoaderOptions } from './webpack/plugins/tsLoader';
 
 type ArrayOrNot<T> = T | T[];
 
@@ -129,15 +127,7 @@ export type UniBuilderExtraConfig = {
      */
     autoprefixer?: ToolsAutoprefixerConfig;
     // tools.htmlPlugin minify option should works
-    htmlPlugin?:
-      | boolean
-      | ConfigChainWithContext<
-          HTMLPluginOptions,
-          {
-            entryName: string;
-            entryValue: (string | string[] | Rspack.EntryDescription)[];
-          }
-        >;
+    htmlPlugin?: ToolsConfig['htmlPlugin'];
     styledComponents?: false | PluginStyledComponentsOptions;
     devServer?: ToolsDevServerConfig;
     /**
